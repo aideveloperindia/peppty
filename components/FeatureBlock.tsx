@@ -3,11 +3,14 @@ type FeatureBlockProps = {
   title: string;
   copy: string;
   align?: 'left' | 'right';
+  image?: string;
+  imageAlt?: string;
 };
 
 import Reveal from '@/components/Reveal';
+import Image from 'next/image';
 
-export default function FeatureBlock({ eyebrow, title, copy, align = 'left' }: FeatureBlockProps) {
+export default function FeatureBlock({ eyebrow, title, copy, align = 'left', image, imageAlt }: FeatureBlockProps) {
   const isRight = align === 'right';
   return (
     <section className="py-16">
@@ -18,9 +21,23 @@ export default function FeatureBlock({ eyebrow, title, copy, align = 'left' }: F
           <p className="mt-3 text-muted max-w-prose">{copy}</p>
         </Reveal>
         <Reveal delay={0.15}>
-          <div className="rounded-xl border bg-surface h-64" aria-hidden>
-          {/* TODO: Replace with product screenshots */}
-          </div>
+          {image ? (
+            <div className="rounded-xl border bg-surface overflow-hidden aspect-video relative">
+              <div className="absolute inset-0 scale-[1.01125] origin-center">
+                <Image 
+                  src={image} 
+                  alt={imageAlt || title} 
+                  width={800} 
+                  height={600} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
+          ) : (
+            <div className="rounded-xl border bg-surface h-64" aria-hidden>
+              {/* TODO: Replace with product screenshots */}
+            </div>
+          )}
         </Reveal>
       </div>
     </section>
