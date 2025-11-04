@@ -244,9 +244,9 @@ export default function ContactForm() {
             exit={{ opacity: 0, y: -10 }}
             role="status"
             className={`text-sm p-4 rounded-lg ${
-              status === 'success'
-                ? 'bg-green-50 text-green-700'
-                : 'bg-red-50 text-red-700'
+              status === 'error'
+                ? 'bg-red-50 text-red-700'
+                : 'bg-blue-50 text-blue-700'
             }`}
           >
             {message}
