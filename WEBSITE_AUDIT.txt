@@ -1,0 +1,221 @@
+Peppty Technologies Website — Content & Pages Audit
+====================================================
+
+STEP 1 — CURRENT PAGES IN CODEBASE
+===================================
+
+Existing Pages:
+1. Home (/) — Hero section, company overview, products preview, team preview, contact CTA
+2. About (/about) — Company intro, timeline (2017-2025), origins/evolution, tech/IP
+3. Products Index (/products) — 5 product cards (Peppty, ChatHub, Shops, Stories, Votes)
+4. Product Detail Pages:
+   - ChatHub (/products/chat) — Video walkthrough, feature blocks
+   - Shops (/products/shops) — Feature blocks with images
+   - Stories (/products/stories) — Feature blocks with images
+   - Votes (/products/votes) — Feature blocks with images
+   - Social (/products/social) — Placeholder content
+5. Founders (/founders) — Team cards with bios (no photos)
+6. Investors (/investors) — Investor names listed
+7. Careers (/careers) — Basic placeholder
+8. Press (/press) — Placeholder with TODO
+9. Contact (/contact) — Contact form, email addresses
+10. Legal Pages:
+    - Privacy Policy (/legal/privacy) — Placeholder
+    - Terms of Use (/legal/terms) — Placeholder
+    - IP/Patents (/legal/ip) — Placeholder
+11. 404 (/404) — Error page
+
+
+STEP 2 — IDEAL PAGES (BASED ON FULL DISCUSSION)
+================================================
+
+Required Pages:
+1. Home — Company overview, product highlights, trust indicators
+2. About — Mission, timeline, company history, tech/IP
+3. Products — Portfolio overview + individual product pages
+4. Founders/Team — Leadership bios and roles
+5. Investors — Investor acknowledgments
+6. Press/Media — Press kit, media contacts, news/coverage
+7. Careers — Open positions, company culture, application process
+8. Contact — Contact form, email addresses, office location
+9. Privacy Policy — Legal privacy document
+10. Terms of Use — Legal terms document
+11. IP/Patents — IP portfolio summary
+
+Optional/Additional:
+- Partners/Programs page (if applicable)
+- Blog/News (if needed)
+
+
+STEP 3 — CONTENT NEEDED FOR EACH PAGE
+======================================
+
+1. HOME PAGE (/)
+   - Current: ✅ Hero section with tagline; ✅ Company overview; ✅ Products preview; ✅ Team preview; ✅ Trust strip; ✅ Contact CTA
+   - Needed: ❌ Final hero tagline review; ❌ Replace placeholder team bio ("Advisory Partner"); ✅ Hero image exists (four-apps-collage.png)
+
+2. ABOUT PAGE (/about)
+   - Current: ✅ Company mission; ✅ Timeline (2017-2025); ✅ Origins/Evolution sections; ✅ Tech/IP summary
+   - Needed: ❌ Company photo/office image; ❌ Detailed milestone descriptions (optional); ✅ Timeline content complete
+
+3. PRODUCTS INDEX (/products)
+   - Current: ✅ 5 product cards (Peppty, ChatHub, Shops, Stories, Votes); ✅ Peppty expandable section with videos
+   - Needed: ✅ All products listed; ✅ Peppty videos embedded
+
+4. PRODUCT DETAIL PAGES
+
+   4a. Peppty Product (/products — expandable)
+   - Current: ✅ Overview section; ✅ Private Likes section; ✅ Popularity section; ✅ YouTube videos embedded
+   - Needed: ✅ Content complete
+
+   4b. ChatHub (/products/chat)
+   - Current: ✅ Product walkthrough video; ✅ Feature blocks (Scale, Monetization, Trust & Safety); ✅ Product images
+   - Needed: ✅ Content complete
+
+   4c. Shops App (/products/shops)
+   - Current: ✅ Feature blocks (Core Functions, Growth, Business Model); ✅ Product images
+   - Needed: ✅ Content complete
+
+   4d. Stories App (/products/stories)
+   - Current: ✅ Feature blocks (Creation, Insights, B2B Potential); ✅ Product images
+   - Needed: ✅ Content complete
+
+   4e. Votes App (/products/votes)
+   - Current: ✅ Feature blocks (Engagement, Simplicity); ✅ Product images
+   - Needed: ⚠️ Only 2 feature blocks (others have 3); Consider adding third feature block
+
+   4f. Social (/products/social)
+   - Current: ⚠️ Placeholder content only
+   - Needed: ❌ Complete product description; ❌ Feature blocks; ❌ Product images; ❌ Decide if this page should exist or redirect
+
+5. FOUNDERS PAGE (/founders)
+   - Current: ✅ Akhilesh Nandagiri bio; ✅ Aditya Nandagiri bio; ✅ Text-only cards (no photos as requested)
+   - Needed: ✅ Content complete
+
+6. INVESTORS PAGE (/investors)
+   - Current: ✅ Gunukula Vamshi Krishna (Angel Investor); ✅ Nandagiri Aruna (Pre-seed Investor); ✅ Text-only layout
+   - Needed: ✅ Content complete
+
+7. CAREERS PAGE (/careers)
+   - Current: ⚠️ Basic placeholder with email link
+   - Needed: ❌ Job listings/positions; ❌ Company culture description; ❌ Benefits/perks; ❌ Application process; ❌ Office location/remote policy
+
+8. PRESS PAGE (/press)
+   - Current: ⚠️ Placeholder with TODO comment
+   - Needed: ❌ Real press kit ZIP file; ❌ Press releases/news articles; ❌ Media coverage links; ❌ Company logos/assets; ❌ High-res founder photos; ❌ Product screenshots for media
+
+9. CONTACT PAGE (/contact)
+   - Current: ✅ Contact form; ✅ Email addresses (media@peppty.com, careers@peppty.com); ✅ Form validation
+   - Needed: ❌ Full office address (currently only "Hyderabad, Telangana, India"); ❌ Phone number (optional); ❌ Office hours; ⚠️ Contact form API needs email integration (currently logs only)
+
+10. LEGAL PAGES
+
+    10a. Privacy Policy (/legal/privacy)
+    - Current: ❌ Placeholder text only
+    - Needed: ❌ Complete legal privacy policy; ❌ Data collection practices; ❌ Cookie policy; ❌ User rights; ❌ Contact for privacy inquiries
+
+    10b. Terms of Use (/legal/terms)
+    - Current: ❌ Placeholder text only
+    - Needed: ❌ Complete terms of service; ❌ User agreements; ❌ Liability disclaimers; ❌ Governing law
+
+    10c. IP/Patents (/legal/ip)
+    - Current: ❌ Placeholder with generic statements
+    - Needed: ❌ Specific patent application numbers; ❌ Trademark registration details; ❌ Patent filing dates; ❌ IP protection notices
+
+
+STEP 4 — IMAGE ASSETS CHECKLIST
+================================
+
+Existing Images:
+- ✅ peppty_logo.jfif — Logo (used in header)
+- ✅ four-apps-collage.png — Hero image (4 products)
+- ✅ chathub.png — ChatHub product icon
+- ✅ shops.png — Shops product icon
+- ✅ stories.png — Stories product icon
+- ✅ votes.png — Votes product icon
+- ✅ peppty.png — Peppty product icon
+- ✅ Product screenshots:
+  - ✅ products/chathub-1.png, chathub-2.png, chathub-3.png
+  - ✅ products/Shops-1.png, Shops-2.png, Shops-3.png
+  - ✅ products/Stories-1.png, Stories-2.png, Stories-3.png
+  - ✅ products/votesapp-1.png, votesapp-2.png
+
+Missing/Placeholder Images:
+- ❌ Final company logo (SVG/PNG) — Currently using peppty_logo.jfif; logo-placeholder.svg exists but not used
+- ❌ Office/company photo for About page
+- ❌ Founder photos (not needed per requirements, but may be needed for press kit)
+- ❌ Press kit assets (logos, high-res images, brand guidelines)
+- ❌ Social product images (if /products/social page is kept)
+- ❌ Additional Votes App screenshot (currently only 2, others have 3)
+
+Unused/Obsolete Images:
+- ⚠️ hero-placeholder.png — Not referenced in code
+- ⚠️ mousecursoricon.png — Removed custom cursor feature
+- ⚠️ peppty-hero.png — Not referenced in current Hero component
+
+
+STEP 5 — STRUCTURED OUTPUT SUMMARY
+===================================
+
+✅ COMPLETE PAGES (Ready for Launch):
+1. Home — Minor: review team bio placeholder
+2. About — Complete; optional: add office photo
+3. Products Index — Complete
+4. ChatHub Product — Complete
+5. Shops Product — Complete
+6. Stories Product — Complete
+7. Peppty Product (expandable) — Complete
+8. Founders — Complete
+9. Investors — Complete
+
+⚠️ PARTIALLY COMPLETE (Needs Content):
+10. Votes Product — Needs: Consider adding 3rd feature block for consistency
+11. Contact — Needs: Full address, optional phone, form email integration
+12. Careers — Needs: Job listings, culture description, application process
+13. Press — Needs: Press kit ZIP, media assets, coverage links
+
+❌ PLACEHOLDER PAGES (Critical for Launch):
+14. Privacy Policy — Needs: Complete legal document from counsel
+15. Terms of Use — Needs: Complete legal document from counsel
+16. IP/Patents — Needs: Specific patent numbers, trademark details, filing dates
+
+❓ TO DECIDE:
+17. Social Product (/products/social) — Currently placeholder; decide: complete content or remove/redirect
+
+
+FINAL SUMMARY
+=============
+
+Critical Missing Content (Block Launch):
+1. Legal documents: Privacy Policy, Terms of Use, IP/Patents (specific details)
+2. Contact form email integration (currently logs only)
+3. Press kit with media assets
+
+Important Missing Content (Should Complete):
+4. Careers page: Job listings, culture, application process
+5. Contact page: Full office address, optional phone
+6. Votes product: Consider 3rd feature block
+7. Social product page: Complete or remove
+
+Nice-to-Have (Optional):
+8. Office/company photo for About page
+9. Final logo file (SVG/PNG) to replace current .jfif
+10. Press coverage/news articles section
+
+Content Status:
+- ✅ Core product pages: 90% complete
+- ✅ Company pages (About, Founders, Investors): 95% complete
+- ⚠️ Legal pages: 10% complete (placeholders only)
+- ⚠️ Careers/Press: 30% complete
+- ✅ Contact: 80% complete (needs email integration)
+
+Recommendation:
+Before launch, prioritize:
+1. Legal documents (Privacy, Terms, IP details)
+2. Contact form email integration
+3. Press kit creation
+4. Careers page content
+5. Final content review and placeholder removal
+
+The site structure is solid; focus on legal content and functional integrations to go live.
+

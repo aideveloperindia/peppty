@@ -8,11 +8,11 @@ export default function SocialProduct() {
     <>
       <SEOHead title="Social" description="Peppty Social product details" />
       <Header />
-      <main className="pt-28">
-        <section className="py-12">
-          <div className="mx-auto max-w-7xl px-4">
-            <h1 className="text-3xl font-semibold">Social</h1>
-            <p className="text-muted mt-2 max-w-2xl">Consumer social experiences, responsibly designed. Placeholder copy.</p>
+      <main className="bg-white pt-4">
+        <section className="pb-24 pt-8">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <h1 className="text-5xl font-medium text-slate-900 md:text-6xl">Social</h1>
+            <p className="mt-6 max-w-2xl text-lg text-slate-600">Consumer social experiences, responsibly designed. Placeholder copy.</p>
           </div>
         </section>
         <FeatureBlock eyebrow="Design" title="Cinematic yet responsible" copy="Tasteful animations, strong privacy defaults, and safety-first systems." />

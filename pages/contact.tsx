@@ -2,85 +2,51 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import ContactForm from '@/components/ContactForm';
-import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   return (
     <>
-      <SEOHead title="Contact / Request Demo" description="Contact Peppty" />
+      <SEOHead title="Invest or Collaborate" description="Connect with Peppty Technologies for investment opportunities and strategic partnerships." />
       <Header />
-      <main className="pt-28">
-        <section className="py-16 md:py-32 spacing-xl cinematic-bg">
-          <div className="mx-auto max-w-7xl px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="mb-16 text-center"
-            >
-              <h1 className="text-4xl md:text-hero-md font-heading font-bold mb-4">Get in Touch</h1>
-              <p className="text-lg text-muted max-w-2xl mx-auto">
-                Reach out for demos, partnerships, and media inquiries.
+      <main className="bg-white pt-4">
+        <section className="border-b border-slate-100 bg-white pb-12 pt-8">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="text-center">
+              <h1 className="text-5xl font-medium text-slate-900 md:text-6xl">Invest or Collaborate</h1>
+              <p className="mt-6 text-lg text-slate-600">
+                Connect with Peppty Technologies for investment opportunities and strategic partnerships. We respond within one business day.
               </p>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-12 items-start">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6 }}
-                className="space-y-8"
-              >
-                <div className="rounded-2xl glass p-8 shadow-lg">
-                  <h2 className="text-2xl font-heading font-bold mb-6 text-primary">Contact Information</h2>
-                  <div className="space-y-6">
+            </div>
+            <div className="mt-16 grid gap-12 md:grid-cols-2 md:items-start">
+              <div className="space-y-8">
+                <div className="rounded-lg border border-slate-200 bg-white p-10">
+                  <h2 className="text-xl font-medium text-slate-900">Direct contacts</h2>
+                  <div className="mt-6 space-y-6 text-base text-slate-600">
                     <div>
-                      <div className="font-semibold text-text mb-2">Media Inquiries</div>
-                      <a
-                        href="mailto:media@peppty.com"
-                        className="text-primary hover:text-primaryHover transition-colors flex items-center gap-2 group"
-                      >
-                        media@peppty.com
-                        <motion.span
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                          className="opacity-0 group-hover:opacity-100"
-                        >
-                          →
-                        </motion.span>
+                      <div className="font-medium text-slate-900">General inquiries</div>
+                      <a href="mailto:contact@peppty.com" className="mt-1 block transition-colors duration-[150ms] hover:text-primary">
+                        contact@peppty.com
                       </a>
                     </div>
                     <div>
-                      <div className="font-semibold text-text mb-2">Careers</div>
-                      <a
-                        href="mailto:careers@peppty.com"
-                        className="text-primary hover:text-primaryHover transition-colors flex items-center gap-2 group"
-                      >
+                      <div className="font-medium text-slate-900">Media enquiries</div>
+                      <a href="mailto:media@peppty.com" className="mt-1 block transition-colors duration-[150ms] hover:text-primary">
+                        media@peppty.com
+                      </a>
+                    </div>
+                    <div>
+                      <div className="font-medium text-slate-900">Careers</div>
+                      <a href="mailto:careers@peppty.com" className="mt-1 block transition-colors duration-[150ms] hover:text-primary">
                         careers@peppty.com
-                        <motion.span
-                          animate={{ x: [0, 4, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                          className="opacity-0 group-hover:opacity-100"
-                        >
-                          →
-                        </motion.span>
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="rounded-2xl glass p-6 shadow-lg">
-                  <p className="text-sm text-muted">
-                    Note: On static hosting, point the form to your email service or external endpoint. See README.
-                  </p>
+                <div className="rounded-lg border border-slate-200 bg-white p-6 text-sm text-slate-600">
+                  If this site is deployed as a static export, configure the API endpoint or form action per the README to ensure submissions reach your team inbox.
                 </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <ContactForm />
-              </motion.div>
+              </div>
+              <ContactForm />
             </div>
           </div>
         </section>

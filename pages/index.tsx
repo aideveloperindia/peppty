@@ -6,246 +6,185 @@ import TeamCard from '@/components/TeamCard';
 import TrustStrip from '@/components/TrustStrip';
 import SEOHead from '@/components/SEOHead';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+
+const products = [
+  {
+    title: 'ChatHub',
+    description: 'A global chat platform that enables private, anonymous-yet-authentic conversations using trust indicators, moderation tools, and privacy-driven features.',
+    href: '/products/chat',
+  },
+  {
+    title: 'Shops App',
+    description: 'A hyperlocal retail discovery platform helping users find nearby stores, check product availability, and connect directly with shop owners.',
+    href: '/products/shops',
+  },
+  {
+    title: 'Stories App',
+    description: 'A private story-sharing application that lets users control who sees their content, offering both public and private engagement options.',
+    href: '/products/stories',
+  },
+  {
+    title: 'Votes App',
+    description: 'A lightweight platform for instant feedback, polls, and civic participation, connecting citizens, communities, and organizations.',
+    href: '/products/votes',
+  },
+];
 
 export default function HomePage() {
   return (
     <>
       <SEOHead />
       <Header />
-      <main>
+      <main className="bg-white">
         <Hero />
-        
-        {/* Overview Section with Parallax */}
-        <section className="py-20 md:py-32 spacing-xl relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-surface/50 to-transparent" />
-          <div className="mx-auto max-w-7xl px-4 relative z-10">
-            <motion.div
-              className="grid md:grid-cols-2 gap-12 items-start"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8 }}
-            >
+
+        <section className="border-b border-slate-100 bg-slate-50">
+          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
+            <div className="grid gap-16 md:grid-cols-2">
               <div className="space-y-6">
-                <motion.h2
-                  className="text-4xl md:text-display font-heading font-bold"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  Building the Future of Social Connection
-                </motion.h2>
-                <motion.p
-                  className="text-lg md:text-subhead-md text-muted leading-relaxed max-w-prose"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  Peppty was founded to create India&apos;s first standalone social network, built on core principles of privacy, controlled visibility, and verified identity. The company&apos;s innovations include Private Likes, Private Comments, and Popularity Scores, protected through trademarks and patent filings.
-                </motion.p>
-                <motion.p
-                  className="text-lg text-muted leading-relaxed max-w-prose"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  Peppty has since evolved into a full-spectrum product studio developing apps across social networking, local commerce, and civic engagement, each designed to connect people more meaningfully and securely.
-                </motion.p>
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">
+                  Our Product Ecosystem
+                </h2>
+                <div className="space-y-4 text-lg leading-relaxed text-slate-600">
+                  <p>
+                    Peppty builds applications focused on practicality, privacy, and real-world utility. Our product line includes social communication tools, hyperlocal commerce solutions, private media sharing, and civic participation platforms.
+                  </p>
+                  <p>
+                    From the first standalone social network built in India to privacy-first commerce and civic platforms, every product is engineered with enterprise-grade infrastructure, verified identity, and responsible data practices.
+                  </p>
+                </div>
               </div>
-              <motion.div
-                className="rounded-2xl glass p-8 shadow-lg"
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <div className="text-2xl font-heading font-bold mb-6 text-primary">Highlights</div>
-                <ul className="space-y-4 text-muted">
-                  <motion.li
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <span className="text-primary mt-1">→</span>
-                    <span>Privacy-first features: Private Likes, Private Comments, Popularity Scores</span>
-                  </motion.li>
-                  <motion.li
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <span className="text-primary mt-1">→</span>
-                    <span>Multiple trademarks and 3 filed patents</span>
-                  </motion.li>
-                  <motion.li
-                    className="flex items-start gap-3"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <span className="text-primary mt-1">→</span>
-                    <span>Applied AI/ML for moderation and authenticity scoring</span>
-                  </motion.li>
+              <div className="rounded-lg border border-slate-200 bg-white p-10">
+                <h3 className="text-xl font-medium text-slate-900">What We Stand For</h3>
+                <ul className="mt-6 space-y-4 text-base text-slate-600">
+                  <li>• Privacy-first architecture</li>
+                  <li>• Transparent, simple user experience</li>
+                  <li>• Scalable systems built for real users</li>
+                  <li>• Continuous innovation backed by in-house R&D</li>
                 </ul>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </section>
 
         <TrustStrip />
 
-        {/* Products Section */}
-        <section className="py-20 md:py-32 spacing-xl relative">
-          <div className="mx-auto max-w-7xl px-4">
-            <motion.div
-              className="flex items-center justify-between mb-16"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-4xl md:text-display font-heading font-bold">Products</h2>
+        <section className="py-24">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Our Products</h2>
+                <p className="mt-4 text-lg text-slate-600">A suite of independent applications built with a focus on privacy, simplicity, and real-world utility.</p>
+              </div>
               <Link
                 href="/products"
-                className="text-primary hover:text-primaryHover font-medium flex items-center gap-2 group"
+                className="text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary"
               >
-                View all
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="text-xl"
-                >
-                  →
-                </motion.span>
+                View all products →
               </Link>
-            </motion.div>
-            <div className="grid md:grid-cols-2 gap-8">
-              <ProductCard
-                title="ChatHub"
-                description="Anonymous yet authentic chat network connecting verified users worldwide."
-                href="/products/chat"
-                index={0}
-              />
-              <ProductCard
-                title="Shops App"
-                description="Retail digitalization platform for neighborhood stores."
-                href="/products/shops"
-                index={1}
-              />
-              <ProductCard
-                title="Stories App"
-                description="Private media sharing with selective visibility and viewer insights."
-                href="/products/stories"
-                index={2}
-              />
-              <ProductCard
-                title="Votes App"
-                description="Civic and feedback platform for always-on engagement."
-                href="/products/votes"
-                index={3}
-              />
+            </div>
+            <div className="mt-16 grid gap-8 md:grid-cols-2">
+              {products.map((product) => (
+                <ProductCard key={product.title} {...product} />
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Team Section */}
-        <section className="py-20 md:py-32 spacing-xl bg-surface relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5" />
-          <div className="mx-auto max-w-7xl px-4 relative z-10">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="mb-16"
-            >
-              <h2 className="text-4xl md:text-display font-heading font-bold mb-4">Founding Team</h2>
-              <p className="text-lg text-muted max-w-2xl">
-                Short company-centric bios. See full profiles on Founders page.
-              </p>
-            </motion.div>
-            <div className="grid md:grid-cols-3 gap-8">
-              <TeamCard name="Akhilesh" role="Founder & CEO" bio="Company-centric bio placeholder." index={0} />
-              <TeamCard name="Aditya" role="Co-founder & CTO" bio="Company-centric bio placeholder." index={1} />
-              <TeamCard name="Investor" role="Key Investor" bio="Company-centric bio placeholder." index={2} />
+        <section className="border-t border-slate-100 bg-slate-50 py-24">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid gap-16 md:grid-cols-2 md:items-center">
+              <div className="space-y-6">
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Institution-ready governance</h2>
+                <p className="text-lg leading-relaxed text-slate-600">
+                  Peppty maintains rigorous compliance frameworks, from data localisation to secure identity verification. Strategic collaborations with accelerators and enterprise partners ensure every launch is audit-ready and scalable.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary"
+                  >
+                    Learn more about our products →
+                  </Link>
+                  <Link
+                    href="/about"
+                    className="inline-flex items-center text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary"
+                  >
+                    Explore our journey →
+                  </Link>
+                </div>
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white p-10">
+                <h3 className="text-xl font-medium text-slate-900">Operating principles</h3>
+                <ul className="mt-6 space-y-4 text-base text-slate-600">
+                  <li>• Privacy-first by design</li>
+                  <li>• Transparent data handling and audit trails</li>
+                  <li>• Responsible AI and content governance</li>
+                  <li>• Sustainable commercial models</li>
+                </ul>
+              </div>
             </div>
-            <motion.div
-              className="mt-12"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-            >
+          </div>
+        </section>
+
+        <section className="py-24">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+              <div>
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Leadership</h2>
+                <p className="mt-4 text-lg text-slate-600">Experienced founders and advisors guiding a long-term product vision.</p>
+              </div>
               <Link
                 href="/founders"
-                className="text-primary hover:text-primaryHover font-medium flex items-center gap-2 group inline-block"
+                className="text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary"
               >
-                View founders
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="text-xl"
-                >
-                  →
-                </motion.span>
+                Meet the founders →
               </Link>
-            </motion.div>
+            </div>
+            <div className="mt-16 grid gap-8 md:grid-cols-3">
+              <TeamCard
+                name="Akhilesh Nandagiri"
+                role="Founder & CEO"
+                bio="Product strategist with experience scaling Peppty from R&D to million-user deployments."
+              />
+              <TeamCard
+                name="Aditya Nandagiri"
+                role="Co-founder"
+                bio="Security-focused co-founder with deep expertise in ethical hacking, patent-led innovation, and operations."
+              />
+              <TeamCard
+                name="Advisory Partner"
+                role="Investor & Board Advisor"
+                bio="Supports governance, market expansion, and institutional partnerships."
+              />
+            </div>
           </div>
         </section>
 
-        {/* Contact Section */}
-        <section className="py-20 md:py-32 spacing-xl cinematic-bg relative">
-          <div className="mx-auto max-w-7xl px-4">
-            <motion.div
-              className="grid md:grid-cols-2 gap-12 items-center"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="space-y-6"
-              >
-                <h2 className="text-4xl md:text-display font-heading font-bold">Get in Touch</h2>
-                <p className="text-lg text-muted leading-relaxed">
-                  Reach out for partnerships, media, careers, or product demos.
+        <section className="border-t border-slate-100 bg-slate-50 py-24">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <div className="grid gap-16 md:grid-cols-2">
+              <div className="space-y-6">
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Connect with us</h2>
+                <p className="text-lg leading-relaxed text-slate-600">
+                  Whether you are exploring investment, product distribution, or strategic partnerships, our leadership team responds within one business day.
                 </p>
                 <Link
                   href="/contact"
-                  className="inline-block rounded-lg bg-primary px-8 py-4 text-white font-medium shadow-lg hover:shadow-glow-lg transition-all duration-300 ripple-effect"
+                  className="inline-flex items-center rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors duration-[150ms] hover:bg-[#d11a1f] focus-visible:bg-[#d11a1f]"
                 >
-                  Request Demo
+                  Contact Peppty
                 </Link>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="relative"
-              >
-                <div className="rounded-2xl glass overflow-hidden shadow-lg">
-                  <img
-                    src="/four-apps-collage.png"
-                    alt="Peppty products - ChatHub, Shops, Stories, Votes"
-                    className="w-full h-auto object-cover"
-                  />
+              </div>
+              <div className="rounded-lg border border-slate-200 bg-white p-10">
+                <h3 className="text-xl font-medium text-slate-900">Corporate contact</h3>
+                <div className="mt-6 space-y-4 text-base text-slate-600">
+                  <p>Peppty Technologies Pvt. Ltd.<br />Hyderabad, Telangana, India</p>
+                  <p>contact@peppty.com</p>
+                  <p>Response SLA: 1 business day</p>
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </div>
         </section>
       </main>

@@ -1,9 +1,9 @@
-# Peppty Technologies Website Refresh
+Peppty Technologies Website Refresh
 
-## Summary
+Summary
 The site now reflects a formal, globally credible corporate presence. Animated hero sequences, custom cursors, and glassmorphism have been removed in favour of static layouts, disciplined typography, and consistent red-on-white accents.
 
-## Key Changes
+Key Changes
 - Standard browser cursor, no motion-driven elements.
 - Fixed white navigation with red hover state, simplified mobile menu.
 - Static hero with clear messaging and a single, high-quality ecosystem image.
@@ -11,20 +11,16 @@ The site now reflects a formal, globally credible corporate presence. Animated h
 - Contact form redesigned with neutral panels, clear labels, and straight-forward success messaging.
 - Dark corporate footer with red link accents and company details.
 
-## Technical Notes
-- Removed `framer-motion`, custom cursor component, and related utility styles.
+Technical Notes
+- Removed framer-motion, custom cursor component, and related utility styles.
 - Replaced motion-driven helper components with static equivalents.
 - Updated global styles to focus on typography, colour tokens, and accessibility.
 - Excluded legacy "version 1" folder from TypeScript compilation to keep builds clean.
-- Verified production build via `npm run build`.
+- Verified production build via npm run build.
 
-## Next Steps
+Next Steps
 - Swap placeholder copy and imagery with final corporate-approved assets.
 - Connect the contact form to the production email/CRM workflow.
 - Capture Lighthouse reports (desktop and mobile) after deployment.
-
-
-
-
 
 

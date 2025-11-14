@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+
+type FormStatus = 'idle' | 'loading' | 'success' | 'error';
 
 export default function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<FormStatus>('idle');
   const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -12,247 +13,131 @@ export default function ContactForm() {
     message: '',
   });
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setStatus('loading');
     setMessage('');
-    const formDataObj = new FormData(e.currentTarget);
+
+    const payload = new FormData(event.currentTarget);
+
     try {
-      const res = await fetch('/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(formDataObj as any))
+        body: JSON.stringify(Object.fromEntries(payload as any)),
       });
-      const data = await res.json();
-      if (res.ok) {
-        setStatus('success');
-        setMessage('Thanks! We received your request. We will get back soon.');
-        e.currentTarget.reset();
-        setFormData({ name: '', email: '', organization: '', usecase: '', message: '' });
-      } else {
-        setStatus('error');
-        setMessage(data?.error || 'Something went wrong. Please try again.');
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data?.error || 'Something went wrong.');
       }
-    } catch (err) {
+
+      setStatus('success');
+      setMessage('Thank you. Our team will respond shortly.');
+      event.currentTarget.reset();
+      setFormData({ name: '', email: '', organization: '', usecase: '', message: '' });
+    } catch (error: unknown) {
       setStatus('error');
-      setMessage('Network error. Please try again.');
+      setMessage(error instanceof Error ? error.message : 'Unable to send message.');
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
-    <motion.form
+    <form
       onSubmit={onSubmit}
-      className="space-y-6 glass-strong rounded-2xl p-8 shadow-lg"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
+      className="rounded-lg border border-slate-200 bg-white p-10"
       aria-labelledby="contact-form-heading"
     >
-      <motion.h2
-        id="contact-form-heading"
-        className="text-3xl font-heading font-bold text-text mb-2"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        Request a demo
-      </motion.h2>
+      <h2 id="contact-form-heading" className="text-3xl font-medium text-slate-900">
+        Get in touch
+      </h2>
+      <p className="mt-3 text-base text-slate-600">
+        Share your details and we will respond within one business day.
+      </p>
 
-      <motion.p
-        className="text-muted mb-6"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        Reach out for partnerships, media, careers, or product demos.
-      </motion.p>
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
+        <label className="flex flex-col text-sm font-medium text-slate-900">
+          Name
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+            className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          />
+        </label>
+        <label className="flex flex-col text-sm font-medium text-slate-900">
+          Email
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          />
+        </label>
+        <label className="flex flex-col text-sm font-medium text-slate-900">
+          Organization
+          <input
+            type="text"
+            name="organization"
+            value={formData.organization}
+            onChange={handleChange}
+            className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          />
+        </label>
+        <label className="flex flex-col text-sm font-medium text-slate-900">
+          Primary use case
+          <input
+            type="text"
+            name="usecase"
+            value={formData.usecase}
+            onChange={handleChange}
+            className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          />
+        </label>
+      </div>
 
-      {/* Success Animation Overlay */}
-      <AnimatePresence>
-        {status === 'success' && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.8 }}
-            className="absolute inset-0 flex items-center justify-center bg-white/95 backdrop-blur-lg rounded-2xl z-50"
-          >
-            <div className="text-center">
-              <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-                className="w-20 h-20 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center"
-              >
-                <motion.svg
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="w-12 h-12 text-green-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <motion.path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M5 13l4 4L19 7"
-                  />
-                </motion.svg>
-              </motion.div>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="text-lg font-medium text-text"
-              >
-                Message sent successfully!
-              </motion.p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.4 }}
-      >
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Name"
-          required
-          className="w-full rounded-lg border border-white/30 bg-white/50 backdrop-blur-sm p-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-          required
-          className="w-full rounded-lg border border-white/30 bg-white/50 backdrop-blur-sm p-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.6 }}
-      >
-        <input
-          type="text"
-          name="organization"
-          value={formData.organization}
-          onChange={handleChange}
-          placeholder="Organization"
-          className="w-full rounded-lg border border-white/30 bg-white/50 backdrop-blur-sm p-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.7 }}
-      >
-        <input
-          type="text"
-          name="usecase"
-          value={formData.usecase}
-          onChange={handleChange}
-          placeholder="Use case"
-          className="w-full rounded-lg border border-white/30 bg-white/50 backdrop-blur-sm p-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
-        />
-      </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.8 }}
-      >
+      <label className="mt-6 flex flex-col text-sm font-medium text-slate-900">
+        Additional context
         <textarea
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Message"
-          rows={4}
-          className="w-full rounded-lg border border-white/30 bg-white/50 backdrop-blur-sm p-4 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 resize-none"
+          rows={5}
+          className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
         />
-      </motion.div>
+      </label>
 
-      {/* Honeypot */}
       <input type="text" name="company_website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
-      <motion.div
-        className="flex flex-col sm:flex-row items-start sm:items-center gap-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.9 }}
-      >
-        <motion.button
+      <div className="mt-8">
+        <button
           type="submit"
-          className="relative rounded-lg bg-primary px-8 py-4 text-white font-medium shadow-lg hover:shadow-glow-lg disabled:opacity-50 transition-all duration-300 ripple-effect overflow-hidden"
+          className="rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors duration-[150ms] hover:bg-[#d11a1f] focus-visible:bg-[#d11a1f] disabled:opacity-50"
           disabled={status === 'loading'}
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
         >
-          {status === 'loading' ? (
-            <span className="flex items-center gap-2">
-              <motion.span
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-              />
-              Sending…
-            </span>
-          ) : (
-            'Send request'
-          )}
-        </motion.button>
-        <a
-          href="https://calendly.com/"
-          target="_blank"
-          rel="noreferrer"
-          className="text-sm text-muted hover:text-primary transition-colors"
-        >
-          Or schedule via Calendly
-        </a>
-      </motion.div>
+          {status === 'loading' ? 'Sending…' : 'Send request'}
+        </button>
+      </div>
 
-      <AnimatePresence>
-        {message && status !== 'success' && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            role="status"
-            className={`text-sm p-4 rounded-lg ${
-              status === 'error'
-                ? 'bg-red-50 text-red-700'
-                : 'bg-blue-50 text-blue-700'
-            }`}
-          >
-            {message}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.form>
+      {message && (
+        <p
+          role="status"
+          className={`mt-6 rounded-lg px-4 py-3 text-sm ${
+            status === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
+          }`}
+        >
+          {message}
+        </p>
+      )}
+    </form>
   );
 }

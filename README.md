@@ -7,7 +7,6 @@ Tech stack
 - Next.js 14 (Pages Router)
 - TypeScript
 - Tailwind CSS
-- Framer Motion (optional, subtle)
 
 Brand tokens
 - Primary red: #ed1e24
@@ -16,6 +15,11 @@ Brand tokens
 - Surface: #f8fafb
 - Text: #0f172a
 - Muted: #6b7280
+
+Simplified Corporate UI
+- November 2025: Replaced motion-heavy visuals with static, typography-led layouts for a formal corporate tone.
+- Introduced a consistent red-and-white component system with restrained shadows, dark footer, and standard cursor.
+- Removed framer-motion and custom cursor logic to keep interactions minimal and accessible by default.
 
 Getting started
 1) Install dependencies

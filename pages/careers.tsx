@@ -7,13 +7,13 @@ export default function CareersPage() {
     <>
       <SEOHead title="Careers" description="Join Peppty" />
       <Header />
-      <main className="pt-28">
-        <section className="py-12">
-          <div className="mx-auto max-w-3xl px-4">
-            <h1 className="text-3xl font-semibold">Careers</h1>
-            <p className="text-muted mt-2">Were assembling a small, senior team focused on product quality and trust. Send your resume to careers@peppty.com (placeholder).</p>
-            <div className="mt-6">
-              <a href="mailto:careers@peppty.com" className="rounded-md bg-primary px-5 py-3 text-white font-medium hover:bg-primaryHover">Email Resume</a>
+      <main className="bg-white pt-4">
+        <section className="pb-12 pt-8">
+          <div className="mx-auto max-w-3xl px-6 lg:px-8">
+            <h1 className="text-5xl font-medium text-slate-900 md:text-6xl">Careers</h1>
+            <p className="mt-6 text-lg leading-relaxed text-slate-600">We're assembling a small, senior team focused on product quality and trust. Send your resume to careers@peppty.com (placeholder).</p>
+            <div className="mt-8">
+              <a href="mailto:careers@peppty.com" className="inline-flex items-center rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors duration-[150ms] hover:bg-[#d11a1f]">Email Resume</a>
             </div>
           </div>
         </section>

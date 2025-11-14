@@ -1,25 +1,20 @@
-import Reveal from '@/components/Reveal';
-
 export default function TrustStrip() {
+  const items = [
+    { value: '1.4M+', label: 'Users across our platforms' },
+    { value: '2017–2025', label: 'Apps launched' },
+    { value: 'Multiple', label: 'Trademarks and patent filings' },
+    { value: '100%', label: 'Founder-owned since 2025' },
+  ];
+
   return (
-    <section className="py-10 bg-surface border-y">
-      <div className="mx-auto max-w-7xl px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-sm">
-        <Reveal><div>
-          <div className="text-2xl font-semibold">3+</div>
-          <div className="text-muted">Filed patents</div>
-        </div></Reveal>
-        <Reveal delay={0.05}><div>
-          <div className="text-2xl font-semibold">Multiple</div>
-          <div className="text-muted">Trademarks</div>
-        </div></Reveal>
-        <Reveal delay={0.1}><div>
-          <div className="text-2xl font-semibold">1.4M+</div>
-          <div className="text-muted">Installs (ChatHub)</div>
-        </div></Reveal>
-        <Reveal delay={0.15}><div>
-          <div className="text-2xl font-semibold">Programs</div>
-          <div className="text-muted">T-Hub · YC SUS · Startup Istanbul</div>
-        </div></Reveal>
+    <section className="border-y border-slate-100 bg-slate-50">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-12 px-6 py-16 text-center md:grid-cols-4 lg:px-8">
+        {items.map((item) => (
+          <div key={item.label}>
+            <div className="text-4xl font-medium text-slate-900">{item.value}</div>
+            <div className="mt-2 text-base text-slate-600">{item.label}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
