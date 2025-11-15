@@ -1,0 +1,518 @@
+# Complete Guide: Deploy Peppty Technologies Website to GoDaddy
+
+## Prerequisites
+- GoDaddy hosting account (with cPanel or File Manager access)
+- Domain name configured
+- Node.js installed on your local machine
+
+---
+
+## Step 1: Build the Static Export Locally
+
+### 1.1 Open Terminal/Command Prompt
+Navigate to your project directory:
+```bash
+cd C:\Users\DELL\pepptywebsite
+```
+
+### 1.2 Install Dependencies (if not already done)
+```bash
+npm install
+```
+
+### 1.3 Build the Static Export
+```bash
+npm run build
+```
+
+This will create an `out/` folder containing all static files.
+
+### 1.4 Verify the Build
+- Check that `out/` folder exists
+- Inside `out/`, you should see:
+  - `index.html`
+  - `products/`, `about/`, `legal/`, etc. folders
+  - `_next/` folder (static assets)
+  - `peppty-logo.png`, `favicon.png`, etc.
+
+---
+
+## Step 2: Access GoDaddy Hosting
+
+### Option A: Using cPanel (Recommended)
+1. Log in to your GoDaddy account
+2. Go to "My Products" → "Web Hosting" → "Manage"
+3. Click on "cPanel"
+4. Open "File Manager"
+
+### Option B: Using FTP
+1. Get FTP credentials from GoDaddy
+2. Use FileZilla or another FTP client
+3. Connect using:
+   - Host: `ftp.yourdomain.com` (or IP provided by GoDaddy)
+   - Username: (provided by GoDaddy)
+   - Password: (provided by GoDaddy)
+   - Port: 21
+
+---
+
+## Step 3: Prepare GoDaddy Hosting
+
+### 3.1 Locate Root Directory
+- In cPanel File Manager: Look for `public_html/` folder (or `httpdocs/`)
+- In FTP: Navigate to the same folder
+
+### 3.2 Backup Existing Files (if any)
+- If you have existing files, create a backup folder
+- Move existing files to backup folder
+
+### 3.3 Clear Root Directory
+- Delete all files in `public_html/` (keep the folder itself)
+- Do NOT delete `.htaccess` if it exists (we'll recreate it)
+
+---
+
+## Step 4: Upload Files to GoDaddy
+
+### Option A: Using cPanel File Manager
+1. Open File Manager in cPanel
+2. Navigate to `public_html/` folder
+3. Click "Upload" button
+4. Select all files from your local `out/` folder
+5. Upload all files (this may take a few minutes)
+
+### Option B: Using FTP
+1. Connect via FTP client
+2. Navigate to `public_html/` folder
+3. Upload all contents from your local `out/` folder:
+   - Drag and drop all folders and files
+   - Maintain the folder structure
+   - Make sure `_next/` folder is uploaded completely
+
+---
+
+## Step 5: Create/Update .htaccess File
+
+### 5.1 Create .htaccess File
+Create a new file named `.htaccess` in your `public_html/` folder with the following content:
+
+```apache
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Handle Next.js routing - redirect all requests to index.html except files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.html [L]
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Enable Compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Cache Control
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+```
+
+### 5.2 Upload .htaccess File
+- Upload the `.htaccess` file to `public_html/`
+- Make sure it's named exactly `.htaccess` (no extension)
+
+---
+
+## Step 6: Verify File Structure
+
+Your `public_html/` folder should now contain:
+```
+public_html/
+├── .htaccess
+├── index.html
+├── about.html
+├── products/
+│   ├── index.html
+│   ├── chat.html
+│   ├── peppty.html
+│   └── ...
+├── legal/
+│   ├── privacy.html
+│   ├── ip.html
+│   └── ...
+├── _next/
+│   └── (static assets)
+├── peppty-logo.png
+├── favicon.png
+├── robots.txt
+├── sitemap.xml
+└── (other static files)
+```
+
+---
+
+## Step 7: Test Your Website
+
+### 7.1 Visit Your Domain
+- Open your browser and visit: `https://yourdomain.com`
+- Test all pages:
+  - Homepage
+  - Products page
+  - About page
+  - Contact form (should open Gmail)
+
+### 7.2 Check for Issues
+- Broken images → Check image paths
+- 404 errors → Check .htaccess routing
+- CSS not loading → Check _next folder upload
+
+---
+
+## Step 8: Domain and SSL Configuration
+
+### 8.1 Domain Pointing
+- Ensure your domain DNS is pointing to GoDaddy hosting
+- A record: `@` → Your hosting IP
+- CNAME: `www` → `@`
+
+### 8.2 SSL Certificate
+- In cPanel, find "SSL/TLS Status"
+- Install Let's Encrypt SSL certificate (free)
+- Force HTTPS redirect
+
+---
+
+## Step 9: Update Contact Form (if needed)
+
+Your contact form now opens Gmail, which works perfectly with static hosting. If you want server-side handling later:
+- Use a third-party service (Formspree, Netlify Forms)
+- Or use GoDaddy email forwarding
+
+---
+
+## Troubleshooting Common Issues
+
+### Issue: 404 errors on page navigation
+**Solution:** Make sure `.htaccess` file is uploaded and RewriteEngine is enabled
+
+### Issue: Images not loading
+**Solution:** Check that image paths in `public/` folder are uploaded correctly
+
+### Issue: CSS/styles not working
+**Solution:** Verify `_next/static/` folder uploaded completely
+
+### Issue: Contact form not working
+**Solution:** Your form opens Gmail, which works. If you need server-side, use third-party service
+
+### Issue: Slow loading
+**Solution:** Enable compression in .htaccess (already included above)
+
+---
+
+## Quick Reference Commands
+
+```bash
+# Build static export
+npm run build
+
+# The output will be in: out/
+# Upload everything from out/ to: public_html/
+```
+
+---
+
+## Post-Deployment Checklist
+
+- [ ] All pages load correctly
+- [ ] Images display properly
+- [ ] Navigation works
+- [ ] Contact form opens Gmail
+- [ ] Mobile responsive
+- [ ] SSL certificate installed
+- [ ] robots.txt accessible
+- [ ] sitemap.xml accessible
+
+---
+
+## Important Notes
+
+1. **Static Export:** Your site is fully static, so API routes won't work. Your contact form opens Gmail, which is perfect for static hosting.
+
+2. **Updates:** When you make changes:
+   - Run `npm run build` locally
+   - Upload new files from `out/` to `public_html/`
+
+3. **Performance:** Static hosting is fast and perfect for your corporate website.
+
+---
+
+## File Permissions
+
+Set correct permissions in cPanel File Manager:
+- Files: 644
+- Folders: 755
+- .htaccess: 644
+
+---
+
+## DNS Configuration Details
+
+### A Record
+- Type: A
+- Name: @
+- Value: Your GoDaddy hosting IP address
+- TTL: 600 seconds (or default)
+
+### CNAME Record
+- Type: CNAME
+- Name: www
+- Value: @
+- TTL: 600 seconds (or default)
+
+---
+
+## SSL Certificate Setup
+
+1. Log in to GoDaddy cPanel
+2. Navigate to "SSL/TLS Status"
+3. Click "Run AutoSSL" or "Install SSL"
+4. Select your domain
+5. Choose "Let's Encrypt" (free)
+6. Click "Install"
+7. Wait for installation (usually 5-10 minutes)
+8. Enable "Force HTTPS Redirect" in cPanel
+
+---
+
+## Performance Optimization Tips
+
+1. **Enable Gzip Compression:** Already included in .htaccess
+2. **Browser Caching:** Already configured in .htaccess
+3. **Image Optimization:** Images are already optimized by Next.js
+4. **CDN:** Consider using Cloudflare CDN for better global performance
+
+---
+
+## Security Best Practices
+
+1. **Keep .htaccess Updated:** The provided .htaccess includes security headers
+2. **Regular Backups:** Backup your `out/` folder before each deployment
+3. **Update Dependencies:** Regularly run `npm update` and rebuild
+4. **Monitor Logs:** Check GoDaddy error logs regularly
+
+---
+
+## Making Updates to Your Website
+
+### Process for Updates:
+1. Make changes to your code locally
+2. Test locally: `npm run dev`
+3. Build static export: `npm run build`
+4. Upload new files from `out/` to `public_html/`
+5. Clear browser cache and test
+
+### What to Upload:
+- Only upload changed files (faster)
+- Or upload entire `out/` folder (safer, recommended)
+
+---
+
+## Contact Form Alternative Solutions
+
+Since your contact form opens Gmail, it works perfectly. If you need server-side processing:
+
+### Option 1: Formspree
+- Sign up at formspree.io
+- Get form endpoint
+- Update contact form to POST to Formspree endpoint
+
+### Option 2: Netlify Forms
+- Not applicable for GoDaddy hosting
+
+### Option 3: EmailJS
+- Sign up at emailjs.com
+- Configure email service
+- Update contact form JavaScript
+
+### Option 4: GoDaddy Email Forwarding
+- Set up email forwarding in cPanel
+- Use mailto: links (current implementation)
+
+---
+
+## Backup Strategy
+
+### Before Each Deployment:
+1. Backup current `out/` folder locally
+2. Download current `public_html/` from GoDaddy
+3. Keep version history
+
+### Backup Commands:
+```bash
+# Create backup folder
+mkdir backups
+mkdir backups/$(date +%Y%m%d)
+
+# Copy out folder
+cp -r out backups/$(date +%Y%m%d)/
+```
+
+---
+
+## Monitoring and Maintenance
+
+### Regular Checks:
+- [ ] Website loads correctly
+- [ ] All links work
+- [ ] Images display properly
+- [ ] Contact form functions
+- [ ] SSL certificate valid
+- [ ] No broken pages (404 errors)
+
+### Monthly Tasks:
+- Update dependencies: `npm update`
+- Rebuild and redeploy
+- Check GoDaddy hosting status
+- Review error logs
+
+---
+
+## Support Resources
+
+### GoDaddy Support:
+- Phone: Check GoDaddy support page
+- Live Chat: Available in GoDaddy account
+- Knowledge Base: help.godaddy.com
+
+### Next.js Documentation:
+- nextjs.org/docs
+- Static Export: nextjs.org/docs/app/building-your-application/deploying/static-exports
+
+---
+
+## Quick Troubleshooting Guide
+
+### Problem: White screen / blank page
+**Check:**
+- index.html exists in public_html/
+- .htaccess file is present
+- File permissions are correct (644)
+
+### Problem: Styles not loading
+**Check:**
+- _next/static/ folder uploaded completely
+- Check browser console for 404 errors
+- Verify file paths in HTML
+
+### Problem: Images broken
+**Check:**
+- Image files exist in public_html/
+- Image paths are correct
+- File extensions match (.png, .jpg, etc.)
+
+### Problem: Routing not working
+**Check:**
+- .htaccess file exists and is correct
+- RewriteEngine is On
+- Apache mod_rewrite is enabled
+
+---
+
+## Advanced Configuration
+
+### Custom Error Pages:
+Create custom 404.html in public_html/:
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>404 - Page Not Found</title>
+</head>
+<body>
+  <h1>404 - Page Not Found</h1>
+  <p>The page you're looking for doesn't exist.</p>
+  <a href="/">Go Home</a>
+</body>
+</html>
+```
+
+### Redirects:
+Add to .htaccess:
+```apache
+# Redirect old page to new page
+Redirect 301 /old-page.html /new-page.html
+```
+
+---
+
+## Final Checklist Before Going Live
+
+- [ ] All pages tested locally
+- [ ] Static export built successfully
+- [ ] All files uploaded to public_html/
+- [ ] .htaccess file uploaded
+- [ ] File permissions set correctly
+- [ ] DNS configured properly
+- [ ] SSL certificate installed
+- [ ] HTTPS redirect enabled
+- [ ] Contact form tested
+- [ ] Mobile responsive tested
+- [ ] All images loading
+- [ ] Navigation working
+- [ ] robots.txt accessible
+- [ ] sitemap.xml accessible
+
+---
+
+## Post-Launch Tasks
+
+1. **Submit to Search Engines:**
+   - Google Search Console
+   - Bing Webmaster Tools
+
+2. **Monitor Performance:**
+   - Google Analytics (if configured)
+   - Page speed tests
+   - Mobile usability tests
+
+3. **Set Up Monitoring:**
+   - Uptime monitoring (UptimeRobot, Pingdom)
+   - Error tracking (if needed)
+
+---
+
+## Conclusion
+
+Your Peppty Technologies website is now ready to deploy to GoDaddy! Follow these steps carefully, and your website will be live in no time.
+
+Remember:
+- Always backup before deploying
+- Test locally first
+- Keep .htaccess file updated
+- Monitor your site regularly
+
+Good luck with your deployment! 🚀
+
+---
+
+Document Version: 1.0
+Last Updated: January 2025
+Project: Peppty Technologies Website
+Framework: Next.js 14 (Static Export)
+

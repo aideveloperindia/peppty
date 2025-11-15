@@ -37,17 +37,17 @@ export default function HomePage() {
       <Header />
       <main className="bg-white">
         <Hero />
-
+        
         <section className="border-b border-slate-100 bg-slate-50">
           <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
             <div className="grid gap-12 md:grid-cols-2">
               <div className="space-y-6">
                 <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">
-                  Our Product Ecosystem
+                  Product Ecosystem
                 </h2>
                 <div className="space-y-4 text-lg leading-relaxed text-slate-600">
                   <p>
-                    Peppty builds applications focused on practicality, privacy, and real-world utility. Our product line includes social communication tools, hyperlocal commerce solutions, private media sharing, and civic participation platforms.
+                    Peppty builds applications focused on practicality, privacy, and real-world utility. The product line includes social communication tools, hyperlocal commerce solutions, private media sharing, and civic participation platforms.
                   </p>
                   <p>
                     From the first standalone social network built in India to privacy-first commerce and civic platforms, every product is engineered with enterprise-grade infrastructure, verified identity, and responsible data practices.
@@ -55,7 +55,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="rounded-lg border border-slate-200 bg-white p-10">
-                <h3 className="text-xl font-medium text-slate-900">What We Stand For</h3>
+                <h3 className="text-xl font-medium text-slate-900">Core Values</h3>
                 <ul className="mt-6 space-y-4 text-base text-slate-600">
                   <li>• Privacy-first architecture</li>
                   <li>• Transparent, simple user experience</li>
@@ -73,7 +73,7 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
-                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Our Products</h2>
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Products</h2>
                 <p className="mt-4 text-lg text-slate-600">A suite of independent applications built with a focus on privacy, simplicity, and real-world utility.</p>
               </div>
               <Link
@@ -95,22 +95,22 @@ export default function HomePage() {
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="space-y-6">
-                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Institution-ready governance</h2>
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Compliance & Security</h2>
                 <p className="text-lg leading-relaxed text-slate-600">
-                  Peppty maintains rigorous compliance frameworks, from data localisation to secure identity verification. Strategic collaborations with accelerators and enterprise partners ensure every launch is audit-ready and scalable.
+                  Peppty follows strict data protection and security standards. All products meet compliance requirements and use verified identity systems.
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/products"
                     className="inline-flex items-center text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary"
                   >
-                    Learn more about our products →
+                    View products →
                   </Link>
                   <Link
                     href="/about"
                     className="inline-flex items-center text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary"
                   >
-                    Explore our journey →
+                    Learn more →
                   </Link>
                 </div>
               </div>
@@ -167,7 +167,7 @@ export default function HomePage() {
               <div className="space-y-6">
                 <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Contact</h2>
                 <p className="text-lg leading-relaxed text-slate-600">
-                  Whether you are exploring investment, product distribution, or strategic partnerships, our leadership team is ready to connect.
+                  Whether you are exploring investment, product distribution, or strategic partnerships, the leadership team is ready to connect.
                 </p>
                 <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=info@peppty.com"

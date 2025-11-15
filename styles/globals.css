@@ -40,11 +40,11 @@ a:focus {
 button {
   font: inherit;
   cursor: pointer;
-}
+  }
 
 button:hover {
   cursor: pointer;
-}
+  }
 
 ::selection {
   background-color: rgba(237, 30, 36, 0.1);

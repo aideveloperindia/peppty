@@ -19,7 +19,7 @@ export default function AboutPage() {
             </p>
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-slate-600">
               We build applications across communication, commerce, media sharing, and public feedback — all with a commitment to reliability and user trust.
-            </p>
+              </p>
           </div>
         </section>
 
@@ -60,7 +60,7 @@ export default function AboutPage() {
                   <li>• Proprietary Android SDK enabling 5× ad revenue optimization.</li>
                   <li>• Multiple trademarks and additional patents in the grant pipeline.</li>
                   <li>• Applied AI/ML for platform moderation, authenticity scoring, and performance analytics.</li>
-                </ul>
+              </ul>
               </div>
             </div>
           </div>

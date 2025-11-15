@@ -52,7 +52,7 @@ export default function ProductsPage() {
       <main className="bg-white pt-4">
         <section className="pb-16 pt-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <h1 className="text-5xl font-medium text-slate-900 md:text-6xl">Our Products</h1>
+            <h1 className="text-5xl font-medium text-slate-900 md:text-6xl">Products</h1>
             <p className="mt-6 max-w-3xl text-lg text-slate-600">
               A suite of independent applications built with a focus on privacy, simplicity, and real-world utility.
             </p>

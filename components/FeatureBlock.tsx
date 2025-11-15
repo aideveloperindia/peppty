@@ -22,18 +22,18 @@ export default function FeatureBlock({ eyebrow, title, copy, align = 'left', ima
         <div>
           {image ? (
             <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
-              <Image
-                src={image}
-                alt={imageAlt || title}
-                width={800}
-                height={600}
+                <Image 
+                  src={image} 
+                  alt={imageAlt || title} 
+                  width={800} 
+                  height={600} 
                 className="h-auto w-full object-cover"
-              />
+                />
             </div>
           ) : (
             <div className="h-64 rounded-lg border border-dashed border-slate-200 bg-slate-50" aria-hidden />
           )}
-        </div>
+            </div>
       </div>
     </section>
   );

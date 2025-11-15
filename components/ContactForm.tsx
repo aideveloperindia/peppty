@@ -43,7 +43,7 @@ export default function ContactForm() {
     // Reset form after opening Gmail
     event.currentTarget.reset();
     setFormData({ name: '', email: '', organization: '', usecase: '', message: '' });
-    setStatus('success');
+        setStatus('success');
     setMessage('Gmail compose window opened. Please send the email to complete your request.');
   }
 
@@ -63,45 +63,45 @@ export default function ContactForm() {
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <label className="flex flex-col text-sm font-medium text-slate-900">
           Name
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
+        <input
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
             className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+        />
         </label>
         <label className="flex flex-col text-sm font-medium text-slate-900">
           Email
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          required
             className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+        />
         </label>
         <label className="flex flex-col text-sm font-medium text-slate-900">
           Organization
-          <input
-            type="text"
-            name="organization"
-            value={formData.organization}
-            onChange={handleChange}
+        <input
+          type="text"
+          name="organization"
+          value={formData.organization}
+          onChange={handleChange}
             className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           />
         </label>
         <label className="flex flex-col text-sm font-medium text-slate-900">
           Primary use case
-          <input
-            type="text"
-            name="usecase"
-            value={formData.usecase}
-            onChange={handleChange}
+        <input
+          type="text"
+          name="usecase"
+          value={formData.usecase}
+          onChange={handleChange}
             className="mt-2 rounded-lg border border-slate-300 bg-white px-4 py-3 text-base text-slate-900 transition-colors duration-[150ms] focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-          />
+        />
         </label>
       </div>
 
@@ -129,14 +129,14 @@ export default function ContactForm() {
 
       {message && (
         <p
-          role="status"
+            role="status"
           className={`mt-6 rounded-lg px-4 py-3 text-sm ${
             status === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'
-          }`}
-        >
-          {message}
+            }`}
+          >
+            {message}
         </p>
-      )}
+        )}
     </form>
   );
 }

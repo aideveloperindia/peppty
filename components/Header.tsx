@@ -58,22 +58,22 @@ export default function Header() {
         </button>
       </nav>
 
-      {mobileMenuOpen && (
+        {mobileMenuOpen && (
         <div id="mobile-nav" className="border-t border-slate-100 bg-white md:hidden">
           <ul className="space-y-1 px-6 py-4 text-sm font-medium text-slate-700">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link
-                  href={link.href}
+                  <Link
+                    href={link.href}
                   className="block rounded-lg px-3 py-2 transition-colors duration-[150ms] hover:text-primary focus-visible:text-primary"
-                >
-                  {link.label}
-                </Link>
+                  >
+                    {link.label}
+                  </Link>
               </li>
-            ))}
+              ))}
           </ul>
-        </div>
-      )}
+            </div>
+        )}
     </header>
   );
 }

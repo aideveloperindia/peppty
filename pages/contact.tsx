@@ -16,7 +16,7 @@ export default function ContactPage() {
               <p className="mt-6 text-lg text-slate-600">
                 Connect with Peppty Technologies for investment opportunities and strategic partnerships. We respond within one business day.
               </p>
-            </div>
+                    </div>
             <div className="mt-12 flex justify-center">
               <div className="w-full max-w-2xl">
                 <ContactForm />
