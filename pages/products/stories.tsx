@@ -10,7 +10,7 @@ export default function StoriesProduct() {
       <SEOHead title="Stories App" description="Private media sharing with selective visibility and viewer insights" />
       <Header />
       <main className="bg-white pt-4">
-        <section className="pb-24 pt-8">
+        <section className="pb-16 pt-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Link href="/products" className="inline-flex items-center text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary mb-6">
               ← Back to Products
@@ -19,7 +19,7 @@ export default function StoriesProduct() {
             <p className="mt-6 max-w-2xl text-lg text-slate-600">Stories App allows users to share photos, videos, or updates with full audience control. Every story can be shared publicly, privately, or with selected viewers.</p>
           </div>
         </section>
-        <section className="py-24">
+        <section className="py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <h2 className="text-3xl font-medium text-slate-900 md:text-4xl">Key Features</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

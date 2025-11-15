@@ -2,7 +2,7 @@ export default function TrustStrip() {
   const items = [
     { value: '1.4M+', label: 'Users across our platforms' },
     { value: '2017–2025', label: 'Apps launched' },
-    { value: 'Multiple', label: 'Trademarks and patent filings' },
+    { value: 'Granted', label: 'Patent + trademarks' },
     { value: '100%', label: 'Founder-owned since 2025' },
   ];
 

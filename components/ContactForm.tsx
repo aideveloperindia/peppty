@@ -18,33 +18,33 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus('loading');
-    setMessage('');
+    
+    // Format form data as email body
+    const emailBody = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.organization ? `Organization: ${formData.organization}` : '',
+      formData.usecase ? `Primary Use Case: ${formData.usecase}` : '',
+      formData.message ? `\nAdditional Context:\n${formData.message}` : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
 
-    const payload = new FormData(event.currentTarget);
+    // Encode the body for URL
+    const encodedBody = encodeURIComponent(emailBody);
+    const encodedSubject = encodeURIComponent('Contact Request from Peppty Website');
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(payload as any)),
-      });
-      const data = await response.json();
+    // Open Gmail compose window
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=info@peppty.com&su=${encodedSubject}&body=${encodedBody}`;
+    window.open(gmailUrl, '_blank');
 
-      if (!response.ok) {
-        throw new Error(data?.error || 'Something went wrong.');
-      }
-
-      setStatus('success');
-      setMessage('Thank you. Our team will respond shortly.');
-      event.currentTarget.reset();
-      setFormData({ name: '', email: '', organization: '', usecase: '', message: '' });
-    } catch (error: unknown) {
-      setStatus('error');
-      setMessage(error instanceof Error ? error.message : 'Unable to send message.');
-    }
+    // Reset form after opening Gmail
+    event.currentTarget.reset();
+    setFormData({ name: '', email: '', organization: '', usecase: '', message: '' });
+    setStatus('success');
+    setMessage('Gmail compose window opened. Please send the email to complete your request.');
   }
 
   return (
@@ -121,10 +121,9 @@ export default function ContactForm() {
       <div className="mt-8">
         <button
           type="submit"
-          className="rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors duration-[150ms] hover:bg-[#d11a1f] focus-visible:bg-[#d11a1f] disabled:opacity-50"
-          disabled={status === 'loading'}
+          className="rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors duration-[150ms] hover:bg-[#d11a1f] focus-visible:bg-[#d11a1f]"
         >
-          {status === 'loading' ? 'Sending…' : 'Send request'}
+          Send request
         </button>
       </div>
 

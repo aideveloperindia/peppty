@@ -39,8 +39,8 @@ export default function HomePage() {
         <Hero />
 
         <section className="border-b border-slate-100 bg-slate-50">
-          <div className="mx-auto max-w-7xl px-6 py-24 lg:px-8">
-            <div className="grid gap-16 md:grid-cols-2">
+          <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+            <div className="grid gap-12 md:grid-cols-2">
               <div className="space-y-6">
                 <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">
                   Our Product Ecosystem
@@ -69,7 +69,7 @@ export default function HomePage() {
 
         <TrustStrip />
 
-        <section className="py-24">
+        <section className="py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
@@ -83,7 +83,7 @@ export default function HomePage() {
                 View all products →
               </Link>
             </div>
-            <div className="mt-16 grid gap-8 md:grid-cols-2">
+            <div className="mt-12 grid gap-8 md:grid-cols-2">
               {products.map((product) => (
                 <ProductCard key={product.title} {...product} />
               ))}
@@ -91,9 +91,9 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="border-t border-slate-100 bg-slate-50 py-24">
+        <section className="border-t border-slate-100 bg-slate-50 py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid gap-16 md:grid-cols-2 md:items-center">
+            <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="space-y-6">
                 <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Institution-ready governance</h2>
                 <p className="text-lg leading-relaxed text-slate-600">
@@ -127,7 +127,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-24">
+        <section className="py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
               <div>
@@ -141,14 +141,14 @@ export default function HomePage() {
                 Meet the founders →
               </Link>
             </div>
-            <div className="mt-16 grid gap-8 md:grid-cols-3">
+            <div className="mt-12 grid gap-8 md:grid-cols-3">
               <TeamCard
-                name="Akhilesh Nandagiri"
+                name="Akhilesh"
                 role="Founder & CEO"
                 bio="Product strategist with experience scaling Peppty from R&D to million-user deployments."
               />
               <TeamCard
-                name="Aditya Nandagiri"
+                name="Aditya"
                 role="Co-founder"
                 bio="Security-focused co-founder with deep expertise in ethical hacking, patent-led innovation, and operations."
               />
@@ -161,27 +161,28 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="border-t border-slate-100 bg-slate-50 py-24">
+        <section className="border-t border-slate-100 bg-slate-50 py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="grid gap-16 md:grid-cols-2">
+            <div className="grid gap-12 md:grid-cols-2">
               <div className="space-y-6">
-                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Connect with us</h2>
+                <h2 className="text-4xl font-medium text-slate-900 md:text-5xl">Contact</h2>
                 <p className="text-lg leading-relaxed text-slate-600">
-                  Whether you are exploring investment, product distribution, or strategic partnerships, our leadership team responds within one business day.
+                  Whether you are exploring investment, product distribution, or strategic partnerships, our leadership team is ready to connect.
                 </p>
-                <Link
-                  href="/contact"
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=info@peppty.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center rounded-lg bg-primary px-8 py-3 text-sm font-medium text-white transition-colors duration-[150ms] hover:bg-[#d11a1f] focus-visible:bg-[#d11a1f]"
                 >
                   Contact Peppty
-                </Link>
+                </a>
               </div>
               <div className="rounded-lg border border-slate-200 bg-white p-10">
                 <h3 className="text-xl font-medium text-slate-900">Corporate contact</h3>
                 <div className="mt-6 space-y-4 text-base text-slate-600">
                   <p>Peppty Technologies Pvt. Ltd.<br />Hyderabad, Telangana, India</p>
-                  <p>contact@peppty.com</p>
-                  <p>Response SLA: 1 business day</p>
+                  <p>info@peppty.com</p>
                 </div>
               </div>
             </div>

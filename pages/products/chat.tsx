@@ -10,7 +10,7 @@ export default function ChatProduct() {
       <SEOHead title="ChatHub" description="Anonymous yet authentic chat network connecting verified users worldwide" />
       <Header />
       <main className="bg-white pt-4">
-        <section className="pb-24 pt-8">
+        <section className="pb-16 pt-8">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Link href="/products" className="inline-flex items-center text-base font-medium text-slate-700 transition-colors duration-[150ms] hover:text-primary mb-6">
               ← Back to Products
@@ -19,7 +19,7 @@ export default function ChatProduct() {
             <p className="mt-6 max-w-2xl text-lg text-slate-600">ChatHub is a privacy-first chat platform built to enable secure communication between strangers while preserving user safety. It uses trust indicators, moderation systems, and real-time safeguards, supporting a global user base of over 1.4 million installs.</p>
           </div>
         </section>
-        <section className="border-t border-slate-100 bg-slate-50 pb-24 pt-12">
+        <section className="border-t border-slate-100 bg-slate-50 pb-16 pt-12">
           <div className="mx-auto max-w-5xl px-6 lg:px-8">
             <div className="grid gap-12 md:grid-cols-2 md:items-center">
               <div className="space-y-6">
@@ -40,7 +40,7 @@ export default function ChatProduct() {
             </div>
           </div>
         </section>
-        <section className="py-24">
+        <section className="py-16">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <h2 className="text-3xl font-medium text-slate-900 md:text-4xl">Key Features</h2>
             <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

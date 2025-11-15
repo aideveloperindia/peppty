@@ -12,8 +12,8 @@ type FeatureBlockProps = {
 export default function FeatureBlock({ eyebrow, title, copy, align = 'left', image, imageAlt }: FeatureBlockProps) {
   const isRight = align === 'right';
   return (
-    <section className="py-24">
-      <div className={`mx-auto grid max-w-7xl items-center gap-16 px-6 md:grid-cols-2 lg:px-8 ${isRight ? 'md:[&>div:first-child]:order-2' : ''}`}>
+    <section className="py-16">
+      <div className={`mx-auto grid max-w-7xl items-center gap-12 px-6 md:grid-cols-2 lg:px-8 ${isRight ? 'md:[&>div:first-child]:order-2' : ''}`}>
         <div className="space-y-6">
           {eyebrow && <div className="text-sm font-medium uppercase tracking-wide text-primary">{eyebrow}</div>}
           <h2 className="text-3xl font-medium text-slate-900 md:text-4xl">{title}</h2>

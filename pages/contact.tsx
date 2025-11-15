@@ -17,36 +17,10 @@ export default function ContactPage() {
                 Connect with Peppty Technologies for investment opportunities and strategic partnerships. We respond within one business day.
               </p>
             </div>
-            <div className="mt-16 grid gap-12 md:grid-cols-2 md:items-start">
-              <div className="space-y-8">
-                <div className="rounded-lg border border-slate-200 bg-white p-10">
-                  <h2 className="text-xl font-medium text-slate-900">Direct contacts</h2>
-                  <div className="mt-6 space-y-6 text-base text-slate-600">
-                    <div>
-                      <div className="font-medium text-slate-900">General inquiries</div>
-                      <a href="mailto:contact@peppty.com" className="mt-1 block transition-colors duration-[150ms] hover:text-primary">
-                        contact@peppty.com
-                      </a>
-                    </div>
-                    <div>
-                      <div className="font-medium text-slate-900">Media enquiries</div>
-                      <a href="mailto:media@peppty.com" className="mt-1 block transition-colors duration-[150ms] hover:text-primary">
-                        media@peppty.com
-                      </a>
-                    </div>
-                    <div>
-                      <div className="font-medium text-slate-900">Careers</div>
-                      <a href="mailto:careers@peppty.com" className="mt-1 block transition-colors duration-[150ms] hover:text-primary">
-                        careers@peppty.com
-                      </a>
-                    </div>
-                  </div>
-                </div>
-                <div className="rounded-lg border border-slate-200 bg-white p-6 text-sm text-slate-600">
-                  If this site is deployed as a static export, configure the API endpoint or form action per the README to ensure submissions reach your team inbox.
-                </div>
+            <div className="mt-12 flex justify-center">
+              <div className="w-full max-w-2xl">
+                <ContactForm />
               </div>
-              <ContactForm />
             </div>
           </div>
         </section>

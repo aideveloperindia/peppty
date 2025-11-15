@@ -6,21 +6,18 @@ type Investor = {
   name: string;
   role: string;
   investment: string;
-  returned: string;
 };
 
 const investors: Investor[] = [
   { 
-    name: 'Gunukula Vamshi Krishna', 
+    name: 'Vamshi Krishna', 
     role: 'Angel Investor',
-    investment: '$28,000',
-    returned: 'XXXXXXX'
+    investment: '$28,000'
   },
   { 
-    name: 'Nandagiri Aruna', 
+    name: 'Aruna', 
     role: 'Pre-seed Investor',
-    investment: '$13,000',
-    returned: 'XXXXXXX'
+    investment: '$13,000'
   },
 ];
 
@@ -37,24 +34,21 @@ export default function InvestorsPage() {
               We acknowledge the early believers who backed Peppty Technologies and continue to support our long-term mission. All investments have been successfully returned by the founder, demonstrating our commitment to investor relationships and financial responsibility.
             </p>
 
-            <div className="mt-16 grid gap-8 md:grid-cols-2">
+            <div className="mt-12 grid gap-8 md:grid-cols-2">
               {investors.map((investor) => (
                 <div key={investor.name} className="rounded-lg border border-slate-200 bg-white p-10">
                   <h2 className="text-xl font-medium text-slate-900">{investor.name}</h2>
                   <p className="mt-2 text-base text-slate-600">{investor.role}</p>
-                  <div className="mt-6 space-y-3 text-base text-slate-600">
+                  <div className="mt-6 text-base text-slate-600">
                     <div>
                       <span className="font-medium text-slate-900">Investment:</span> {investor.investment}
-                    </div>
-                    <div>
-                      <span className="font-medium text-slate-900">Returned:</span> {investor.returned}
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            <div className="mt-16 rounded-lg border border-slate-200 bg-white p-10">
+            <div className="mt-12 rounded-lg border border-slate-200 bg-white p-10">
               <h2 className="text-3xl font-medium text-slate-900 md:text-4xl">Current Financial Performance</h2>
               <div className="mt-8 space-y-6">
                 <div>
